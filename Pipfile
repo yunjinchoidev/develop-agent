@@ -10,6 +10,14 @@ openai = "*"
 flask = "*"
 fastapi = "*"
 uvicorn = "*"
+pygame = "*"
+jupyter = "*"
+wandb = "*"
+wandb-addons = "*"
+huggingface-hub = "*"
+googlesearch-python = "*"
+google-search-results = "*"
+tweepy = "*"
 
 [dev-packages]
 
