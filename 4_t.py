@@ -6,6 +6,7 @@ from langchain.tools import PythonREPLTool
 
 load_dotenv()
 
+
 def main():
 
     python_agent_executor = create_python_agent(
@@ -15,8 +16,8 @@ def main():
         verbose=True,
     )
 
-
-    python_agent_executor.run("""
+    python_agent_executor.run(
+        """
             develop a add, delete cotrol todo webpage.
             the working file should save in static folder index.html. 
             and mapping by fastapi.
@@ -27,7 +28,9 @@ def main():
             you should save file.
             you should present me result "localhost:4500" so that I can see the result.
                     
-    """)
+    """
+    )
+
 
 if __name__ == "__main__":
     main()

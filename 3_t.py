@@ -6,6 +6,7 @@ from langchain.tools import PythonREPLTool
 
 load_dotenv()
 
+
 def main():
 
     python_agent_executor = create_python_agent(
@@ -15,7 +16,8 @@ def main():
         verbose=True,
     )
 
-    python_agent_executor.run("""
+    python_agent_executor.run(
+        """
         Develop a webpage that shows the total number of page views. 
         when you refresh the page, the number of page views should increase by one.
         the html file should save in static folder index.html.     
@@ -28,7 +30,9 @@ def main():
         you should use port 4500.
         you can use the terminal in the server.
         you should present me result "localhost:4500" so that I can see the result.
-    """)
+    """
+    )
+
 
 if __name__ == "__main__":
     main()
