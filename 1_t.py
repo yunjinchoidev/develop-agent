@@ -19,6 +19,7 @@ def main():
     python_agent_executor.run(
         """
         Please develop a webpage that displays "hello world!" 
+        you can import flask and use flask to develop a webpage.
         The ports you can use are 4500 port.
         you should present me "localhost:4500" so that I can see the result.
     """
