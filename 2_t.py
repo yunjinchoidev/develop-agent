@@ -3,6 +3,8 @@ from langchain.agents import AgentType
 from langchain.agents.agent_toolkits import create_python_agent
 from langchain.chat_models import ChatOpenAI
 from langchain.tools import PythonREPLTool
+from langchain.schema import BaseOutputParser
+import os
 
 load_dotenv()
 
@@ -10,7 +12,7 @@ load_dotenv()
 def main():
 
     python_agent_executor = create_python_agent(
-        llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo"),
+        llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-16k-0613"),
         tool=PythonREPLTool(),
         agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
         verbose=True,
@@ -18,18 +20,9 @@ def main():
 
     python_agent_executor.run(
         """
-        Please develop a webpage that allows me to move a box with my mouse.
-        the html file should save in static folder index.html.        
-        watch out triple-quoted string literal.
-        and mapping by fastapi. 
-        fastapi is already installed in this project.
-        you can use uvicorn. uvicorn is already installed.
-        you dont have to install anything.
-        you should use HTMLResponse to serve your html file and save fastapi file in app.py.
-        you should save file.
-        you should use port 4500.
-        you can use the terminal in the server.
-        you should present me result "localhost:4500" so that I can see the result.
+        Please develop a webpage that allows me to move a box with my mouse.        
+        The ports you can use are 4500 and 7000.
+        you should run it on localhost.
     """
     )
 
