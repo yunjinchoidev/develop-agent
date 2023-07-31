@@ -10,7 +10,7 @@ load_dotenv()
 def main():
 
     python_agent_executor = create_python_agent(
-        llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo"),
+        llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-16k-0613"),
         tool=PythonREPLTool(),
         agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
         verbose=True,
@@ -18,16 +18,8 @@ def main():
 
     python_agent_executor.run(
         """
-        Please develop a webpage that displays "hello world!" just string.
-        you can use fastapi.fastapi is already installed.
-        you can use uvicorn. uvicorn is already installed.
-        you dont have to install anything.
-        source code saved in app.py
-        note that you can look syntax of fastapi in the documentation.
+        Please develop a webpage that displays "hello world!" 
         The ports you can use are 4500 port.
-        the command is uvicorn app:app --port 4500
-        you should run it in the terminal of the server
-        you can use the terminal in the server.
         you should present me "localhost:4500" so that I can see the result.
     """
     )
