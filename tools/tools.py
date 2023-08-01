@@ -3,6 +3,7 @@ from langchain.agents import AgentType, initialize_agent
 from dotenv import load_dotenv
 from langchain.chat_models import ChatOpenAI
 from langchain.agents import Tool
+from langchain.tools import PythonREPLTool
 
 # Do this so we can see exactly what's going on under the hood
 import langchain
@@ -36,14 +37,25 @@ def find_code_search_by_serp(name: str):
         Tool(
             name="Search",
             func=search.run,
-            description="Useful when you need to answer questions about current events. You should ask targeted questions.",
-        )
+            description="""            
+                Useful when you need to answer questions about current events. 
+                You should ask targeted questions.
+            """,
+        ),
+        Tool(
+            name="python_repl",
+            func=PythonREPLTool(),
+            description="python_repl, useful for when you need to run python code, and get the output, or save the output to a file",
+        ),
     ]
+
     mrkl = initialize_agent(
-        tools, llm, agent=AgentType.OPENAI_MULTI_FUNCTIONS, verbose=True
+        tools=tools, llm=llm, agent=AgentType.OPENAI_MULTI_FUNCTIONS, verbose=True
     )
 
-    return mrkl.run(name)
+    run = mrkl.run(name)
+
+    return run
 
 
 if __name__ == "__main__":

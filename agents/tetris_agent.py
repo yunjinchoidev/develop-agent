@@ -1,4 +1,4 @@
-from tools.tools import get_profile_url, serp_search
+from tools.tools import serp_search
 from langchain import PromptTemplate
 from langchain.agents import initialize_agent, Tool
 from langchain.agents import AgentType
