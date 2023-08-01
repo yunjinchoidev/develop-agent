@@ -20,19 +20,12 @@ from langchain.tools import PythonREPLTool
 # Do this so we can see exactly what's going on under the hood
 import langchain
 
-langchain.debug = True
+# langchain.debug = True
 
 load_dotenv()
 
 
 def main():
-
-    chat_agent_executor = create_python_agent(
-        llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-16k-0613"),
-        tool=PythonREPLTool(),
-        agent_type=AgentType.OPENAI_FUNCTIONS,
-        verbose=True,
-    )
 
     python_agent_executor = create_python_agent(
         llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo"),
@@ -40,49 +33,49 @@ def main():
         agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
         verbose=True,
     )
-    #
+
     # python_agent_executor.run(
     #     """
-    #     Please develop a webpage that allows me to move a box with my mouse.
-    #     The box should be 100px by 100px and should be red.
-    #     The ports you can use are 4500 and 7000.
-    #     you should use the python library flask.
-    #     you should run the server with the command python app.py.
-    #     you must return "localhost:4500" as the url where the webpage is hosted.
+    #     Please develop a webpage that moving a box with my mouse.
+    #     the html file should save in static folder index.html.
+    #     watch out triple-quoted string literal.
+    #     and mapping by fastapi.
+    #     you dont have to install anything.
+    #     you should use HTMLResponse to serve your html file and save fastapi file in app.py.
+    #     you should save file.
+    #
+    #     <must have to do>
+    #     you should use port 4500.
+    #     Run fastAPI server by uvicorn app:app --reload --port 4500
+    #     don't use ! or $ in terminal.
     # """
     # )
 
-    grand_agent = initialize_agent(
-        tools=[
-            Tool(
-                name="PythonAgent",
-                func=python_agent_executor.run,
-                description="""
-                           useful when you need to transform natural language and write from it python
-                           and execute the python code,
-                           returning the results of the code execution,
-                               """,
-            ),
-            Tool(
-                name="ChatAgent",
-                func=chat_agent_executor.run,
-                description="""
-                            useful when you need to transform natural language and write from it python
-                            and execute the python code,
-                            returning the results of the code execution,
-                                """,
-            ),
-        ],
-        llm=ChatOpenAI(temperature=0, model="gpt-3.5-turbo"),
-        agent_type=AgentType.OPENAI_FUNCTIONS,
-        verbose=True,
-    )
+    # python_agent_executor.run(
+    #     """
+    #     Please develop a webpage that moving a box with my mouse.
+    #     the html file should save in static folder index.html.
+    #     watch out triple-quoted string literal.
+    #     and mapping by fastapi.
+    #     you dont have to install anything.
+    #     you should use HTMLResponse to serve your html file and save fastapi file in app.py.
+    #     you should save file.
+    #     The ports you can use are 4500 and 7000.
+    #
+    # """
+    # )
 
-    grand_agent.run(
+    python_agent_executor.run(
         """
-        Please develop a webpage that allows me to move a box with my mouse.
-        The box should be 100px by 100px and should be red.
-        The ports you can use are 4500 and 7000.
+        Develop a webpage with a box that can be moved using the mouse.
+        Save the HTML file in a static folder named 'index.html'.
+        Pay attention to triple-quoted string literals.
+        Map it using FastAPI.
+        There is no need to install anything.
+        Use HTMLResponse to serve your HTML file.
+        Save the FastAPI file as 'app.py'.
+        The available ports you can use are 4500 and 7000.
+        Use uvicorn to launch the FastAPI server, making it directly accessible.
     """
     )
 
