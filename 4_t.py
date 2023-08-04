@@ -28,35 +28,6 @@ def main():
         verbose=True,
     )
 
-    # python_agent_executor.run(
-    #     """
-    #         develop a add, delete cotrol todo webpage.
-    #         the working file should save in static folder index.html.
-    #         and mapping by fastapi.
-    #         fastapi is already installed in this project.
-    #         you can use uvicorn. uvicorn is already installed.
-    #         you don't have to install anything.
-    #         you should use HTMLResponse to serve your html file and save fastapi file in app.py.
-    #         you should save file.
-    #         you should present me result "localhost:4500" so that I can see the result.
-    #
-    # """
-    # )
-    # python_agent_executor.run(
-    #     """
-    #         develop a add, delete cotrol todo webpage.
-    #         the working file should save in static folder index.html.
-    #         and mapping by fastapi.
-    #         fastapi is already installed in this project.
-    #         you can use uvicorn. uvicorn is already installed.
-    #         you don't have to install anything.
-    #         you should use HTMLResponse to serve your html file and save fastapi file in app.py.
-    #         you should save file.
-    #         you should present me result "localhost:4500" so that I can see the result.
-    #
-    # """
-    # )
-
     python_agent_executor.run(
         """
             Develop a add, delete control todo webpage.
