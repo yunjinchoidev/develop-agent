@@ -34,37 +34,6 @@ def main():
         verbose=True,
     )
 
-    # python_agent_executor.run(
-    #     """
-    #     Please develop a webpage that moving a box with my mouse.
-    #     the html file should save in static folder index.html.
-    #     watch out triple-quoted string literal.
-    #     and mapping by fastapi.
-    #     you dont have to install anything.
-    #     you should use HTMLResponse to serve your html file and save fastapi file in app.py.
-    #     you should save file.
-    #
-    #     <must have to do>
-    #     you should use port 4500.
-    #     Run fastAPI server by uvicorn app:app --reload --port 4500
-    #     don't use ! or $ in terminal.
-    # """
-    # )
-
-    # python_agent_executor.run(
-    #     """
-    #     Please develop a webpage that moving a box with my mouse.
-    #     the html file should save in static folder index.html.
-    #     watch out triple-quoted string literal.
-    #     and mapping by fastapi.
-    #     you dont have to install anything.
-    #     you should use HTMLResponse to serve your html file and save fastapi file in app.py.
-    #     you should save file.
-    #     The ports you can use are 4500 and 7000.
-    #
-    # """
-    # )
-
     python_agent_executor.run(
         """
         Develop a webpage with a box that can be moved using the mouse.
