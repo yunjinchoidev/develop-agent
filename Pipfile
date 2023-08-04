@@ -23,6 +23,7 @@ langchain-experimental = "*"
 wikipedia = "*"
 faiss-cpu = "*"
 tiktoken = "*"
+argilla = "*"
 
 [dev-packages]
 
